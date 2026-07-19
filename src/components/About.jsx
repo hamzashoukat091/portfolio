@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { BrainCircuit, Rocket, ShieldCheck, GraduationCap, Award } from 'lucide-react'
 import Reveal, { EASE } from './Reveal'
 import SectionHeading from './SectionHeading'
-import { profile, education, certification } from '../data/profile'
+import { profile, education, certifications } from '../data/profile'
 
 const highlights = [
   {
@@ -69,9 +69,17 @@ export default function About() {
             <Reveal delay={0.36}>
               <div className="glass h-full rounded-2xl p-6">
                 <Award className="mb-3 h-6 w-6 text-violet-glow" />
-                <h3 className="text-sm font-semibold text-snow">Cisco CCT</h3>
-                <p className="mt-1 text-sm text-fog">{certification.name.split('—')[1]}</p>
-                <p className="mt-1 font-mono text-xs text-fog/70">{certification.period}</p>
+                <h3 className="text-sm font-semibold text-snow">Certifications</h3>
+                <ul className="mt-2 space-y-2">
+                  {certifications.map((c) => (
+                    <li key={c.name}>
+                      <p className="text-sm text-snow">{c.name}</p>
+                      <p className="font-mono text-xs text-fog/70">
+                        {c.issuer} · {c.period}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           </div>

@@ -78,9 +78,9 @@ export const skillGroups = [
 ]
 
 export const techMarquee = [
-  'Python', 'FastAPI', 'Claude', 'GPT', 'LangChain', 'Pinecone', 'PostgreSQL',
-  'React', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Selenium', 'Scrapy',
-  'Docker', 'Linux', 'Git', 'AWS', 'Django', 'Express',
+  'Python', 'FastAPI', 'Claude 4', 'GPT-5', 'LangChain', 'RAG', 'AI Agents',
+  'PostgreSQL', 'SQLAlchemy', 'AWS SageMaker', 'EC2', 'Selenium', 'Scrapy',
+  'Django', 'React', 'Node.js', 'Git', 'Linux',
 ]
 
 export const projects = [
@@ -239,8 +239,8 @@ export const education = {
   period: '2018 — 2022',
 }
 
-export const certification = {
-  name: 'Cisco Certified Technician (CCT) — Routing & Switching',
-  issuer: 'Cisco',
-  period: 'Feb 2022 — Feb 2025',
-}
+export const certifications = [
+  { name: 'Generative AI LLMs', issuer: 'NVIDIA-Certified Associate', period: 'In Progress' },
+  { name: 'Data Cleaning', issuer: 'Kaggle', period: 'Dec 2024' },
+  { name: 'Python Programming', issuer: 'Kaggle', period: 'Apr 2024' },
+]
