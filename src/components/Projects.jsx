@@ -94,10 +94,13 @@ function TiltCard({ project, index }) {
               target="_blank"
               rel="noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-neon/95 px-3 py-1.5 font-mono text-[11px] font-semibold text-ink transition-colors duration-200 hover:bg-neon-2"
+              className="group/live absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-neon/95 px-3 py-1.5 font-mono text-[11px] font-semibold text-ink transition-colors duration-200 hover:bg-neon-2"
             >
               Visit Live Site
-              <ArrowUpRight className="h-3 w-3" />
+              <span aria-hidden className="relative h-3 w-3 overflow-hidden">
+                <ArrowUpRight className="h-3 w-3 transition-transform duration-300 ease-out group-hover/live:-translate-y-[160%] group-hover/live:translate-x-[160%]" />
+                <ArrowUpRight className="absolute inset-0 h-3 w-3 -translate-x-[160%] translate-y-[160%] transition-transform duration-300 ease-out group-hover/live:translate-x-0 group-hover/live:translate-y-0" />
+              </span>
             </a>
           ) : (
             <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-ink/60 px-3 py-1.5 font-mono text-[11px] text-fog backdrop-blur">
@@ -111,7 +114,13 @@ function TiltCard({ project, index }) {
           <h3 className="text-lg font-bold text-snow transition-colors duration-200 group-hover:text-neon-2">
             {project.name}
           </h3>
-          <ArrowUpRight className="h-5 w-5 shrink-0 text-fog opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neon group-hover:opacity-100" />
+          <span
+            aria-hidden
+            className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line/60 text-fog transition-all duration-300 group-hover:border-neon group-hover:bg-neon group-hover:text-ink group-hover:shadow-[0_0_16px_-2px_rgba(34,197,94,0.6)]"
+          >
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:-translate-y-[160%] group-hover:translate-x-[160%]" />
+            <ArrowUpRight className="absolute h-4 w-4 -translate-x-[160%] translate-y-[160%] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
+          </span>
         </div>
         <p className="mt-2 text-sm leading-relaxed text-fog">{project.description}</p>
 
@@ -173,10 +182,13 @@ export default function Projects() {
           href={profile.socials.github}
           target="_blank"
           rel="noreferrer"
-          className="glass glow-ring inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-semibold text-snow transition-all duration-300 hover:border-neon/40 hover:text-neon-2"
+          className="group glass glow-ring inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-semibold text-snow transition-all duration-300 hover:border-neon/40 hover:text-neon-2"
         >
           More on GitHub
-          <ArrowUpRight className="h-4 w-4" />
+          <span aria-hidden className="relative h-4 w-4 overflow-hidden">
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:-translate-y-[160%] group-hover:translate-x-[160%]" />
+            <ArrowUpRight className="absolute inset-0 h-4 w-4 -translate-x-[160%] translate-y-[160%] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
+          </span>
         </a>
       </Reveal>
     </section>

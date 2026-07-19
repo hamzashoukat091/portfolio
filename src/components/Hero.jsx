@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Download, MessageCircle, ChevronDown, MapPin } from 'lucide-react'
+import { ArrowRight, Download, MessageCircle, MapPin } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from './BrandIcons'
 import ParticleField from './ParticleField'
+import ScrollCue from './ScrollCue'
 import { EASE } from './Reveal'
 import { profile } from '../data/profile'
 import headshot from '../assets/headshot.webp'
@@ -136,7 +137,10 @@ export default function Hero() {
                 className="glow-ring group inline-flex items-center gap-2 rounded-full bg-neon px-7 py-3.5 font-semibold text-ink transition-colors duration-300 hover:bg-neon-2"
               >
                 View My Work
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <span aria-hidden className="relative h-4 w-4 overflow-hidden">
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-[160%]" />
+                  <ArrowRight className="absolute inset-0 h-4 w-4 -translate-x-[160%] transition-transform duration-300 ease-out group-hover:translate-x-0" />
+                </span>
               </a>
             </Magnetic>
             <Magnetic>
@@ -220,15 +224,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <motion.a
-        href="#about"
-        aria-label="Scroll to about section"
-        className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2 text-fog transition-colors hover:text-neon"
-        animate={{ y: [0, 9, 0] }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <ChevronDown className="h-6 w-6" />
-      </motion.a>
+      <ScrollCue />
     </section>
   )
 }
