@@ -177,6 +177,7 @@ export const experience = [
       'Architected PerfectCSR, an AI customer-service platform with bot management, conversation handling and agentic decision-making.',
       'Shipped Claude 4 / GPT-4.5 with advanced RAG for context-aware responses, plus an Agent Controller for autonomous tool selection and workflow automation.',
       'Built universal web-crawling pipelines integrating WooCommerce, Shopify, BigCommerce and messaging platforms on a scalable FastAPI + PostgreSQL backend.',
+      'Added background task processing and analytics dashboards to track user engagement and system performance at enterprise scale.',
     ],
   },
   {
@@ -187,6 +188,7 @@ export const experience = [
       'Built advanced LLM workflows — chains, agents and function calling — to automate complex tasks (Sofizar team).',
       'Deployed Llama 3-8B, Falcon, Claude 3 and e5-Large on AWS SageMaker with data-engineering preprocessing pipelines.',
       'Created knowledge-base and SQL chatbots, plus a logistics platform for tracking and order booking.',
+      'Ran continuous prompt engineering and built automated financial-reporting pipelines, with robust APIs bridging front-end and back-end.',
     ],
   },
   {
@@ -197,6 +199,7 @@ export const experience = [
       'Built web-scraping data pipelines feeding ML models integrated into Django applications (AI FAYVO team).',
       'Improved adult-content detection with Random Forest + Google API labels; cleaned image and video datasets.',
       'Built recommendation systems using matrix factorization and GPT text-embedding-ada-002.',
+      'Researched and implemented novel techniques that measurably boosted model accuracy on production datasets.',
     ],
   },
   {
@@ -207,6 +210,7 @@ export const experience = [
       'Built admin, seller and customer portals on Django MVT for a multi-vendor e-commerce site.',
       'Developed responsive pages with HTML, Bootstrap, jQuery and Ajax.',
       'Managed the codebase on GitHub and deployed to AWS EC2.',
+      'Organized media and static assets under Django MVT and ensured smooth front-end/back-end integration.',
     ],
   },
 ]
