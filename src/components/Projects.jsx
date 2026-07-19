@@ -1,11 +1,27 @@
 import { useRef, useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import {
-  Bot, LineChart, Sparkles, Ticket, Database, Eye, ShoppingCart, Heart, ArrowUpRight,
+  Bot, LineChart, Sparkles, Ticket, Database, Eye, ShoppingCart, Heart, ArrowUpRight, Lock,
 } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import Reveal, { EASE } from './Reveal'
 import { projects, projectCategories, profile } from '../data/profile'
+
+import perfectcsr from '../assets/projects/perfectcsr.webp'
+import openval from '../assets/projects/openval.webp'
+import llmbots from '../assets/projects/llmbots.webp'
+import drowsiness from '../assets/projects/drowsiness.webp'
+import fimbay from '../assets/projects/fimbay.webp'
+import fayvo from '../assets/projects/fayvo.webp'
+
+const IMAGES = {
+  'perfectcsr.webp': perfectcsr,
+  'openval.webp': openval,
+  'llmbots.webp': llmbots,
+  'drowsiness.webp': drowsiness,
+  'fimbay.webp': fimbay,
+  'fayvo.webp': fayvo,
+}
 
 const ICONS = {
   bot: Bot,
@@ -23,6 +39,7 @@ function TiltCard({ project, index }) {
   const ref = useRef(null)
   const reduced = useReducedMotion()
   const Icon = ICONS[project.icon] ?? Sparkles
+  const image = project.image ? IMAGES[project.image] : null
 
   const onMove = (e) => {
     if (reduced || !ref.current) return
@@ -49,12 +66,45 @@ function TiltCard({ project, index }) {
         onPointerLeave={onLeave}
         className="sheen glass group h-full cursor-pointer rounded-2xl p-6 transition-[transform,border-color,box-shadow] duration-300 will-change-transform hover:border-neon/35 hover:shadow-2xl hover:shadow-neon/5"
       >
-        <div className={`relative mb-6 flex h-36 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br ${project.accent}`}>
-          <div aria-hidden className="bg-grid absolute inset-0 opacity-60" />
-          <Icon className="relative h-14 w-14 text-snow/85 transition-transform duration-500 group-hover:scale-115 group-hover:rotate-3" strokeWidth={1.3} />
+        <div className={`relative mb-6 h-36 overflow-hidden rounded-xl bg-gradient-to-br ${project.accent}`}>
+          {image ? (
+            <>
+              <img
+                src={image}
+                alt={`${project.name} interface preview`}
+                loading="lazy"
+                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/5 to-transparent" />
+            </>
+          ) : (
+            <>
+              <div aria-hidden className="bg-grid absolute inset-0 opacity-60" />
+              <Icon className="absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 text-snow/85 transition-transform duration-500 group-hover:scale-115 group-hover:rotate-3" strokeWidth={1.3} />
+            </>
+          )}
+
           <span className="absolute right-3 top-3 rounded-full bg-ink/60 px-3 py-1 font-mono text-[11px] text-neon-2 backdrop-blur">
             {project.category}
           </span>
+
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-neon/95 px-3 py-1.5 font-mono text-[11px] font-semibold text-ink transition-colors duration-200 hover:bg-neon-2"
+            >
+              Visit Live Site
+              <ArrowUpRight className="h-3 w-3" />
+            </a>
+          ) : (
+            <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-ink/60 px-3 py-1.5 font-mono text-[11px] text-fog backdrop-blur">
+              <Lock className="h-3 w-3" />
+              Private / Custom Build
+            </span>
+          )}
         </div>
 
         <div className="flex items-start justify-between gap-3">

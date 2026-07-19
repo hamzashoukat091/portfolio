@@ -6,6 +6,7 @@ export const profile = {
   company: 'Daria Technologies',
   email: 'hamzashoukat091@gmail.com',
   phone: '+92-341-5535091',
+  resumeUrl: '/Hamza-Shoukat-Resume.pdf',
   bio: `Senior AI Python Developer with 4+ years specializing in intelligent automation, SaaS platforms and enterprise AI solutions. I've architected systems serving 10K+ users, cut operational costs by 40%, and I live at the intersection of agentic systems and LLM integration.`,
   roles: [
     'Agentic AI Systems',
@@ -91,6 +92,8 @@ export const projects = [
     stack: ['Python', 'FastAPI', 'Claude', 'RAG', 'PostgreSQL'],
     accent: 'from-emerald-500/25 via-teal-500/10 to-transparent',
     icon: 'bot',
+    image: 'perfectcsr.webp',
+    liveUrl: 'https://perfectcsr.ai',
   },
   {
     name: 'OpenVal.ai',
@@ -100,6 +103,8 @@ export const projects = [
     stack: ['Python', 'LLM', 'Embeddings', 'FastAPI'],
     accent: 'from-cyan-500/25 via-sky-500/10 to-transparent',
     icon: 'chart',
+    image: 'openval.webp',
+    liveUrl: 'https://openval.ai',
   },
   {
     name: 'LLM Bots',
@@ -109,6 +114,7 @@ export const projects = [
     stack: ['Claude', 'GPT', 'LangChain', 'Vector DB'],
     accent: 'from-violet-500/25 via-purple-500/10 to-transparent',
     icon: 'sparkles',
+    image: 'llmbots.webp',
   },
   {
     name: 'Ticket Luck',
@@ -136,6 +142,7 @@ export const projects = [
     stack: ['Python', 'OpenCV', 'ML'],
     accent: 'from-blue-500/25 via-indigo-500/10 to-transparent',
     icon: 'eye',
+    image: 'drowsiness.webp',
   },
   {
     name: 'FIMBAY',
@@ -145,6 +152,7 @@ export const projects = [
     stack: ['Django', 'Python', 'jQuery', 'Bootstrap'],
     accent: 'from-teal-500/25 via-emerald-500/10 to-transparent',
     icon: 'cart',
+    image: 'fimbay.webp',
   },
   {
     name: 'FAYVO',
@@ -154,6 +162,7 @@ export const projects = [
     stack: ['Python', 'REST API', 'Mobile Backend'],
     accent: 'from-fuchsia-500/25 via-violet-500/10 to-transparent',
     icon: 'heart',
+    image: 'fayvo.webp',
   },
 ]
 

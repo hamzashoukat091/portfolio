@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Download, ChevronDown, MapPin } from 'lucide-react'
+import { ArrowRight, Download, MessageCircle, ChevronDown, MapPin } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from './BrandIcons'
 import ParticleField from './ParticleField'
 import { EASE } from './Reveal'
 import { profile } from '../data/profile'
+import headshot from '../assets/headshot.webp'
 
 function useTypewriter(words, typeMs = 65, holdMs = 1700) {
   const [text, setText] = useState('')
@@ -87,7 +88,7 @@ export default function Hero() {
       <div aria-hidden className="bg-grid absolute inset-0" />
       <ParticleField />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-24 pt-32 sm:px-8">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 px-5 pb-24 pt-32 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
         <motion.div variants={container} initial="hidden" animate="show" className="max-w-3xl">
           <motion.div
             variants={item}
@@ -140,10 +141,20 @@ export default function Hero() {
             </Magnetic>
             <Magnetic>
               <a
-                href="#contact"
+                href={profile.resumeUrl}
+                download
                 className="glass inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-semibold text-snow transition-all duration-300 hover:border-neon/40 hover:text-neon-2"
               >
                 <Download className="h-4 w-4" />
+                Resume
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-3.5 font-semibold text-fog transition-colors duration-300 hover:text-neon-2"
+              >
+                <MessageCircle className="h-4 w-4" />
                 Let&apos;s Talk
               </a>
             </Magnetic>
@@ -173,6 +184,38 @@ export default function Hero() {
             <MapPin className="h-4 w-4 text-neon" />
             {profile.location} · {profile.company}
           </motion.p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: EASE, delay: 0.35 }}
+          className="relative mx-auto hidden w-full max-w-sm sm:block lg:mx-0"
+        >
+          <div aria-hidden className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-neon/20 via-cyan-glow/10 to-transparent blur-2xl" />
+          <div className="relative animate-float">
+            <div className="glass glow-ring rounded-[2rem] p-2.5 shadow-2xl shadow-black/40">
+              <img
+                src={headshot}
+                alt={`${profile.name} — ${profile.role}`}
+                width={900}
+                height={900}
+                className="aspect-square w-full rounded-[1.6rem] object-cover"
+              />
+            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: EASE, delay: 0.9 }}
+              className="glass-strong absolute -left-5 bottom-6 flex items-center gap-2 rounded-xl px-4 py-3 shadow-xl shadow-black/30"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-neon opacity-70" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-neon" />
+              </span>
+              <span className="font-mono text-xs text-snow">4+ yrs · AI Engineering</span>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 
