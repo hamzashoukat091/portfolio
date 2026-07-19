@@ -3,7 +3,7 @@ export const profile = {
   role: 'Senior AI Python Developer',
   tagline: 'Turning Vision into Virtual Reality',
   location: 'Lahore, Pakistan',
-  company: 'Daria Technologies',
+  company: 'Proximate Solutions',
   email: 'hamzashoukat091@gmail.com',
   phone: '+92-341-5535091',
   resumeUrl: '/Hamza-Shoukat-Resume.pdf',
@@ -170,33 +170,43 @@ export const projectCategories = ['All', 'AI SaaS', 'AI Agents', 'Data', 'Comput
 
 export const experience = [
   {
-    role: 'Full Stack Developer',
-    company: 'Sofizar',
-    period: 'Aug 2023 — Present',
+    role: 'Senior AI Python Developer',
+    company: 'Proximate Solutions',
+    period: 'Jul 2024 — Present',
     points: [
-      'Core developer on the Truckistan platform team.',
-      'Own end-to-end features across Python backends and modern JS frontends.',
-      'Ship AI-assisted features into production workflows.',
+      'Architected PerfectCSR, an AI customer-service platform with bot management, conversation handling and agentic decision-making.',
+      'Shipped Claude 4 / GPT-4.5 with advanced RAG for context-aware responses, plus an Agent Controller for autonomous tool selection and workflow automation.',
+      'Built universal web-crawling pipelines integrating WooCommerce, Shopify, BigCommerce and messaging platforms on a scalable FastAPI + PostgreSQL backend.',
     ],
   },
   {
-    role: 'Python ML/AI Engineer',
-    company: 'ILSA Interactive',
-    period: 'Jun 2022 — Aug 2023',
+    role: 'Full Stack Developer / Data Engineer',
+    company: 'Daria Technologies · NIC LUMS',
+    period: 'Jul 2023 — Jul 2024',
     points: [
-      'Machine Learning engineer & data-scientist technical consultant.',
-      'Data mining, model selection, scraping, cleaning and collection at scale.',
-      'Built training-ready datasets powering client ML products.',
+      'Built advanced LLM workflows — chains, agents and function calling — to automate complex tasks (Sofizar team).',
+      'Deployed Llama 3-8B, Falcon, Claude 3 and e5-Large on AWS SageMaker with data-engineering preprocessing pipelines.',
+      'Created knowledge-base and SQL chatbots, plus a logistics platform for tracking and order booking.',
+    ],
+  },
+  {
+    role: 'Python AI/ML Engineer',
+    company: 'ILSA Interactive',
+    period: 'Jun 2022 — Jul 2023',
+    points: [
+      'Built web-scraping data pipelines feeding ML models integrated into Django applications (AI FAYVO team).',
+      'Improved adult-content detection with Random Forest + Google API labels; cleaned image and video datasets.',
+      'Built recommendation systems using matrix factorization and GPT text-embedding-ada-002.',
     ],
   },
   {
     role: 'Python Developer',
-    company: 'Saw Developers',
+    company: 'SAW Developers',
     period: 'Jun 2021 — May 2022',
     points: [
-      'Built FIMBAY, a multi-vendor e-commerce marketplace in Django.',
-      'Full-stack delivery: Python, CSS3, Bootstrap, jQuery and Ajax.',
-      'Owned deployments and production maintenance.',
+      'Built admin, seller and customer portals on Django MVT for a multi-vendor e-commerce site.',
+      'Developed responsive pages with HTML, Bootstrap, jQuery and Ajax.',
+      'Managed the codebase on GitHub and deployed to AWS EC2.',
     ],
   },
 ]
@@ -225,7 +235,7 @@ export const testimonials = [
 
 export const education = {
   degree: 'BSc Software Engineering',
-  school: 'The Superior College',
+  school: 'Superior University',
   period: '2018 — 2022',
 }
 
