@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-ink: #0f172a;
+  --color-ink-2: #131c33;
+  --color-surface: #1e293b;
+  --color-muted-2: #272f42;
+  --color-line: #334155;
+  --color-fog: #94a3b8;
+  --color-snow: #f8fafc;
+  --color-neon: #22c55e;
+  --color-neon-2: #4ade80;
+  --color-cyan-glow: #22d3ee;
+  --color-violet-glow: #a78bfa;
+
+  --animate-blob: blob 18s ease-in-out infinite;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-blink: blink 1.06s step-end infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    28% { transform: translate(9%, -12%) scale(1.12); }
+    55% { transform: translate(-11%, 8%) scale(0.94); }
+    80% { transform: translate(5%, 11%) scale(1.06); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+}
+
+html {
+  scrollbar-color: #334155 #0f172a;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-snow);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(34, 197, 94, 0.35);
+  color: #f8fafc;
+}
+
+/* Glass surface used across cards / nav */
+.glass {
+  background: rgba(30, 41, 59, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.glass-strong {
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+/* Fine grid backdrop for the hero */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 55%, transparent 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(92deg, #f8fafc 8%, #4ade80 52%, #22d3ee 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.glow-ring:hover {
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.4), 0 0 42px -8px rgba(34, 197, 94, 0.45);
+}
+
+/* Card sheen sweep on hover */
+.sheen { position: relative; overflow: hidden; }
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 42%, rgba(248, 250, 252, 0.07) 50%, transparent 58%);
+  transform: translateX(-130%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.sheen:hover::after { transform: translateX(130%); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
