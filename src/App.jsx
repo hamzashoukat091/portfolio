@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar'
+import CommandPalette from './components/CommandPalette'
 import ScrollProgress from './components/ScrollProgress'
 import CursorGlow from './components/CursorGlow'
 import Hero from './components/Hero'
@@ -24,6 +25,7 @@ export default function App() {
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
+      <CommandPalette />
       <main>
         <Hero />
         <Stats />

@@ -24,9 +24,9 @@ export default function ScrollCue() {
           scroll
         </span>
 
-        <span className="relative flex h-10 w-[1.55rem] justify-center rounded-full border border-line/90 bg-ink/30 backdrop-blur-sm transition-all duration-300 group-hover:border-neon/60 group-hover:shadow-[0_0_20px_-4px_rgba(34,197,94,0.55)]">
+        <span className="relative flex h-10 w-[1.55rem] justify-center rounded-full border border-line/90 bg-ink/30 backdrop-blur-sm transition-all duration-300 group-hover:border-neon/60 group-hover:shadow-[0_0_11px_-5px_rgba(34,197,94,0.5)]">
           <motion.span
-            className="absolute top-1.5 h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_8px_rgba(34,197,94,0.9)]"
+            className="absolute top-1.5 h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_5px_rgba(34,197,94,0.7)]"
             animate={reduced ? undefined : { y: [0, 16, 16], opacity: [0, 1, 0], scale: [0.7, 1, 0.5] }}
             transition={{ duration: 1.9, repeat: Infinity, ease: [0.45, 0, 0.35, 1] }}
           />

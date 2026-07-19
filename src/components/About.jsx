@@ -58,24 +58,34 @@ export default function About() {
           ))}
 
           <div className="grid gap-5 sm:grid-cols-2">
-            <Reveal delay={0.28}>
+            <Reveal delay={0.28} className="h-full">
               <div className="glass h-full rounded-2xl p-6">
-                <GraduationCap className="mb-3 h-6 w-6 text-cyan-glow" />
-                <h3 className="text-sm font-semibold text-snow">{education.degree}</h3>
-                <p className="mt-1 text-sm text-fog">{education.school}</p>
-                <p className="mt-1 font-mono text-xs text-fog/70">{education.period}</p>
+                <div className="mb-4 flex items-center gap-2.5">
+                  <GraduationCap className="h-5 w-5 text-cyan-glow" />
+                  <h3 className="text-sm font-semibold text-snow">Education</h3>
+                </div>
+                <ul className="space-y-3">
+                  <li>
+                    <p className="text-sm text-snow">{education.degree}</p>
+                    <p className="mt-0.5 font-mono text-xs text-fog/70">
+                      {education.school} · {education.period}
+                    </p>
+                  </li>
+                </ul>
               </div>
             </Reveal>
-            <Reveal delay={0.36}>
+            <Reveal delay={0.36} className="h-full">
               <div className="glass h-full rounded-2xl p-6">
-                <Award className="mb-3 h-6 w-6 text-violet-glow" />
-                <h3 className="text-sm font-semibold text-snow">Certifications</h3>
-                <ul className="mt-2 space-y-2">
+                <div className="mb-4 flex items-center gap-2.5">
+                  <Award className="h-5 w-5 text-violet-glow" />
+                  <h3 className="text-sm font-semibold text-snow">Certifications</h3>
+                </div>
+                <ul className="space-y-3">
                   {certifications.map((c) => (
                     <li key={c.name}>
                       <p className="text-sm text-snow">{c.name}</p>
-                      <p className="font-mono text-xs text-fog/70">
-                        {c.issuer} · {c.period}
+                      <p className="mt-0.5 font-mono text-xs text-fog/70">
+                        {c.period ? `${c.issuer} · ${c.period}` : c.issuer}
                       </p>
                     </li>
                   ))}

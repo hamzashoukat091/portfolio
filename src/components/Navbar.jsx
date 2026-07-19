@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, TerminalSquare } from 'lucide-react'
+import { Menu, X, TerminalSquare, Search } from 'lucide-react'
 import { EASE } from './Reveal'
 
 const LINKS = [
@@ -47,8 +47,10 @@ export default function Navbar() {
       initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass-strong shadow-lg shadow-black/25' : 'bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
+        scrolled
+          ? 'border-line/30 bg-ink/75 shadow-lg shadow-black/25 backdrop-blur-xl'
+          : 'border-transparent bg-transparent'
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
@@ -82,6 +84,16 @@ export default function Navbar() {
             </li>
           ))}
           <li className="ml-3">
+            <button
+              onClick={() => window.dispatchEvent(new Event('cmdk:open'))}
+              aria-label="Open command palette"
+              className="glass flex cursor-pointer items-center gap-2 rounded-full px-3.5 py-2 text-fog transition-all duration-300 hover:border-neon/40 hover:text-snow"
+            >
+              <Search className="h-3.5 w-3.5" />
+              <kbd className="font-mono text-[10px]">Ctrl K</kbd>
+            </button>
+          </li>
+          <li className="ml-1">
             <a
               href="#contact"
               className="glow-ring rounded-full bg-neon px-5 py-2 text-sm font-semibold text-ink transition-all duration-300 hover:bg-neon-2"

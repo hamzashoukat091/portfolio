@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Download, MessageCircle, MapPin } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from './BrandIcons'
 import ParticleField from './ParticleField'
 import ScrollCue from './ScrollCue'
 import { EASE } from './Reveal'
@@ -162,26 +161,6 @@ export default function Hero() {
                 Let&apos;s Talk
               </a>
             </Magnetic>
-            <div className="ml-1 flex items-center gap-3">
-              <a
-                href={profile.socials.github}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub profile"
-                className="glass rounded-full p-3 text-fog transition-all duration-300 hover:-translate-y-1 hover:text-neon"
-              >
-                <GithubIcon className="h-5 w-5" />
-              </a>
-              <a
-                href={profile.socials.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn profile"
-                className="glass rounded-full p-3 text-fog transition-all duration-300 hover:-translate-y-1 hover:text-neon"
-              >
-                <LinkedinIcon className="h-5 w-5" />
-              </a>
-            </div>
           </motion.div>
 
           <motion.p variants={item} className="mt-8 inline-flex items-center gap-2 font-mono text-sm text-fog">
@@ -218,7 +197,7 @@ export default function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-neon opacity-70" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-neon" />
               </span>
-              <span className="font-mono text-xs text-snow">4+ yrs · AI Engineering</span>
+              <span className="font-mono text-xs text-snow">5+ yrs · AI Engineering</span>
             </motion.div>
           </div>
         </motion.div>

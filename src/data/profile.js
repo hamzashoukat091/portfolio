@@ -7,7 +7,7 @@ export const profile = {
   email: 'hamzashoukat091@gmail.com',
   phone: '+92-341-5535091',
   resumeUrl: '/Hamza-Shoukat-Resume.pdf',
-  bio: `Senior AI Python Developer with 4+ years specializing in intelligent automation, SaaS platforms and enterprise AI solutions. I've architected systems serving 10K+ users, cut operational costs by 40%, and I live at the intersection of agentic systems and LLM integration.`,
+  bio: `Senior AI Python Developer with 5+ years specializing in intelligent automation, SaaS platforms and enterprise AI solutions. I've architected systems serving 10K+ users, cut operational costs by 40%, and I live at the intersection of agentic systems and LLM integration.`,
   roles: [
     'Agentic AI Systems',
     'RAG & LLM Integration',
@@ -24,7 +24,7 @@ export const profile = {
 }
 
 export const stats = [
-  { label: 'Years of AI Engineering', value: 4, suffix: '+' },
+  { label: 'Years of AI Engineering', value: 5, suffix: '+' },
   { label: 'Users Served in Production', value: 10, suffix: 'K+' },
   { label: 'Operational Cost Reduction', value: 40, suffix: '%' },
   { label: 'Projects Shipped', value: 15, suffix: '+' },
@@ -117,24 +117,6 @@ export const projects = [
     image: 'llmbots.webp',
   },
   {
-    name: 'Ticket Luck',
-    category: 'AI Agents',
-    description:
-      'Autonomous ticketing AI agent that classifies, prioritizes and resolves inbound requests end-to-end.',
-    stack: ['Python', 'Agents', 'API', 'Automation'],
-    accent: 'from-amber-500/25 via-orange-500/10 to-transparent',
-    icon: 'ticket',
-  },
-  {
-    name: 'JSON Splitter + Qdrant',
-    category: 'Data',
-    description:
-      'Nested JSON extraction and vector-DB integration tool — automated data pipelines with Qdrant for semantic retrieval. 5.0★ Upwork delivery.',
-    stack: ['Python', 'Qdrant', 'Vector DB', 'ETL'],
-    accent: 'from-rose-500/25 via-pink-500/10 to-transparent',
-    icon: 'database',
-  },
-  {
     name: 'Drowsiness Detection',
     category: 'Computer Vision',
     description:
@@ -166,7 +148,7 @@ export const projects = [
   },
 ]
 
-export const projectCategories = ['All', 'AI SaaS', 'AI Agents', 'Data', 'Computer Vision', 'Web']
+export const projectCategories = ['All', 'AI SaaS', 'AI Agents', 'Computer Vision', 'Web']
 
 export const experience = [
   {
@@ -236,7 +218,7 @@ export const education = {
 }
 
 export const certifications = [
-  { name: 'Generative AI LLMs', issuer: 'NVIDIA-Certified Associate', period: 'In Progress' },
+  { name: 'Generative AI LLMs', issuer: 'NVIDIA-Certified Associate', period: '' },
   { name: 'Data Cleaning', issuer: 'Kaggle', period: 'Dec 2024' },
   { name: 'Python Programming', issuer: 'Kaggle', period: 'Apr 2024' },
 ]

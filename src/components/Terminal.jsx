@@ -30,7 +30,7 @@ function run(cmdRaw) {
         `${profile.name} — ${profile.role}`,
         `${profile.location} · ${profile.company}`,
         '',
-        '4+ years turning vision into virtual reality.',
+        '5+ years turning vision into virtual reality.',
         '10K+ users served · 40% costs cut · 0 boring chatbots.',
       ]
     case 'skills':

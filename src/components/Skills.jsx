@@ -1,8 +1,56 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useRef, useState } from 'react'
+import {
+  motion, AnimatePresence, useAnimationFrame, useMotionValue, useReducedMotion,
+  useScroll, useSpring, useTransform, useVelocity,
+} from 'framer-motion'
 import SectionHeading from './SectionHeading'
 import Reveal, { EASE } from './Reveal'
 import { skillGroups, techMarquee } from '../data/profile'
+
+const wrap = (min, max, v) => min + ((((v - min) % (max - min)) + (max - min)) % (max - min))
+
+// Marquee that drifts left on its own and reacts to scroll: scrolling down
+// accelerates it, scrolling up reverses it. Slows to a crawl on hover.
+function VelocityMarquee({ items }) {
+  const baseX = useMotionValue(0)
+  const { scrollY } = useScroll()
+  const smoothVelocity = useSpring(useVelocity(scrollY), { damping: 50, stiffness: 400 })
+  const velocityFactor = useTransform(smoothVelocity, [0, 1200], [0, 4], { clamp: false })
+  const direction = useRef(-1)
+  const hovering = useRef(false)
+  const reduced = useReducedMotion()
+  const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`)
+
+  useAnimationFrame((_, delta) => {
+    if (reduced) return
+    const vf = velocityFactor.get()
+    if (vf < 0) direction.current = 1
+    else if (vf > 0) direction.current = -1
+    let moveBy = direction.current * 1.7 * (delta / 1000)
+    moveBy += moveBy * Math.abs(vf) * 2.2
+    if (hovering.current) moveBy *= 0.15
+    baseX.set(baseX.get() + moveBy)
+  })
+
+  return (
+    <div
+      onPointerEnter={() => { hovering.current = true }}
+      onPointerLeave={() => { hovering.current = false }}
+      className="relative overflow-hidden py-2 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]"
+    >
+      <motion.div style={{ x }} className="flex w-max gap-4 pr-4">
+        {[...items, ...items].map((t, i) => (
+          <span
+            key={`${t}-${i}`}
+            className="glass rounded-full px-5 py-2 font-mono text-sm text-fog transition-colors duration-200 hover:border-neon/40 hover:text-neon-2"
+          >
+            {t}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  )
+}
 
 function Bar({ name, level, delay }) {
   return (
@@ -82,20 +130,9 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* tech marquee */}
+      {/* tech marquee — speed and direction follow scroll velocity */}
       <Reveal className="mt-16" y={16}>
-        <div className="relative overflow-hidden py-2 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
-          <div className="flex w-max animate-marquee gap-4 hover:[animation-play-state:paused]">
-            {[...techMarquee, ...techMarquee].map((t, i) => (
-              <span
-                key={`${t}-${i}`}
-                className="glass rounded-full px-5 py-2 font-mono text-sm text-fog transition-colors duration-200 hover:border-neon/40 hover:text-neon-2"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
+        <VelocityMarquee items={techMarquee} />
       </Reveal>
     </section>
   )

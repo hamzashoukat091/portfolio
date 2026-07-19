@@ -26,10 +26,11 @@ export default function ParticleField() {
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
         r: Math.random() * 1.6 + 0.6,
+        phase: Math.random() * Math.PI * 2,
       }))
     }
 
-    const step = () => {
+    const step = (now = performance.now()) => {
       const w = canvas.offsetWidth
       const h = canvas.offsetHeight
       ctx.clearRect(0, 0, w, h)
@@ -49,25 +50,43 @@ export default function ParticleField() {
         if (p.x < 0 || p.x > w) p.vx *= -1
         if (p.y < 0 || p.y > h) p.vy *= -1
 
+        // slow twinkle, each node on its own phase
+        const glow = 0.42 + 0.2 * Math.sin(now * 0.0012 + p.phase)
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(74, 222, 128, 0.5)'
+        ctx.fillStyle = `rgba(74, 222, 128, ${glow})`
         ctx.fill()
       }
 
+      // node-to-node links: shift cyan -> neon and thicken as nodes converge
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i]
           const b = particles[j]
           const d = Math.hypot(a.x - b.x, a.y - b.y)
-          if (d < 120) {
+          if (d < 130) {
+            const t = 1 - d / 130
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
             ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `rgba(34, 211, 238, ${0.12 * (1 - d / 120)})`
-            ctx.lineWidth = 0.7
+            ctx.strokeStyle = `rgba(${(34 + 40 * t) | 0}, ${(211 + 11 * t) | 0}, ${(238 - 110 * t) | 0}, ${0.05 + 0.15 * t})`
+            ctx.lineWidth = 0.5 + 0.55 * t
             ctx.stroke()
           }
+        }
+      }
+
+      // cursor joins the network: link nearby nodes to the pointer
+      for (const p of particles) {
+        const d = Math.hypot(mouse.x - p.x, mouse.y - p.y)
+        if (d < 170) {
+          const t = 1 - d / 170
+          ctx.beginPath()
+          ctx.moveTo(p.x, p.y)
+          ctx.lineTo(mouse.x, mouse.y)
+          ctx.strokeStyle = `rgba(74, 222, 128, ${0.04 + 0.18 * t})`
+          ctx.lineWidth = 0.5 + 0.5 * t
+          ctx.stroke()
         }
       }
       raf = requestAnimationFrame(step)

@@ -42,8 +42,11 @@ function TiltCard({ project, index }) {
   const image = project.image ? IMAGES[project.image] : null
 
   const onMove = (e) => {
-    if (reduced || !ref.current) return
+    if (!ref.current) return
     const rect = ref.current.getBoundingClientRect()
+    ref.current.style.setProperty('--spot-x', `${e.clientX - rect.left}px`)
+    ref.current.style.setProperty('--spot-y', `${e.clientY - rect.top}px`)
+    if (reduced) return
     const px = (e.clientX - rect.left) / rect.width - 0.5
     const py = (e.clientY - rect.top) / rect.height - 0.5
     ref.current.style.transform = `perspective(900px) rotateY(${px * 9}deg) rotateX(${py * -9}deg) translateY(-4px)`
@@ -64,7 +67,7 @@ function TiltCard({ project, index }) {
         ref={ref}
         onPointerMove={onMove}
         onPointerLeave={onLeave}
-        className="sheen glass group h-full cursor-pointer rounded-2xl p-6 transition-[transform,border-color,box-shadow] duration-300 will-change-transform hover:border-neon/35 hover:shadow-2xl hover:shadow-neon/5"
+        className="sheen spotlight glass group h-full cursor-pointer rounded-2xl p-6 transition-[transform,border-color,box-shadow] duration-300 will-change-transform hover:border-neon/35 hover:shadow-2xl hover:shadow-neon/5"
       >
         <div className={`relative mb-6 h-36 overflow-hidden rounded-xl bg-gradient-to-br ${project.accent}`}>
           {image ? (
@@ -116,7 +119,7 @@ function TiltCard({ project, index }) {
           </h3>
           <span
             aria-hidden
-            className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line/60 text-fog transition-all duration-300 group-hover:border-neon group-hover:bg-neon group-hover:text-ink group-hover:shadow-[0_0_16px_-2px_rgba(34,197,94,0.6)]"
+            className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line/60 text-fog transition-all duration-300 group-hover:border-neon group-hover:bg-neon group-hover:text-ink group-hover:shadow-[0_0_9px_-4px_rgba(34,197,94,0.4)]"
           >
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:-translate-y-[160%] group-hover:translate-x-[160%]" />
             <ArrowUpRight className="absolute h-4 w-4 -translate-x-[160%] translate-y-[160%] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />

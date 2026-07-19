@@ -74,7 +74,7 @@ export default function Contact() {
             ))}
 
             <Reveal delay={0.3}>
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="flex flex-wrap gap-2.5 pt-2">
                 {socials.map(({ icon: Icon, label, href }) => (
                   <a
                     key={label}
@@ -82,9 +82,9 @@ export default function Contact() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={label}
-                    className="glass flex items-center gap-2 rounded-full px-4 py-2.5 text-sm text-fog transition-all duration-300 hover:-translate-y-0.5 hover:border-neon/40 hover:text-neon-2"
+                    className="glass flex items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-2 text-xs font-medium text-fog transition-all duration-300 hover:-translate-y-0.5 hover:border-neon/40 hover:text-neon-2"
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-4 w-4 shrink-0" />
                     {label}
                   </a>
                 ))}
