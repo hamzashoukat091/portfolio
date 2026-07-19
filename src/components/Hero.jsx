@@ -200,6 +200,7 @@ export default function Hero() {
                 alt={`${profile.name} — ${profile.role}`}
                 width={900}
                 height={900}
+                fetchPriority="high"
                 className="aspect-square w-full rounded-[1.6rem] object-cover"
               />
             </div>

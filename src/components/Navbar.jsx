@@ -27,11 +27,15 @@ export default function Navbar() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id))
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return
+          // Hero in view means no section link should look active.
+          setActive(e.target.id === 'top' ? '' : e.target.id)
+        })
       },
       { rootMargin: '-42% 0px -52% 0px' },
     )
-    LINKS.forEach(({ id }) => {
+    ;['top', ...LINKS.map((l) => l.id)].forEach((id) => {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
@@ -57,7 +61,7 @@ export default function Navbar() {
           hamza<span className="text-neon">.dev</span>
         </a>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {LINKS.map(({ id, label }) => (
             <li key={id}>
               <a
@@ -88,7 +92,7 @@ export default function Navbar() {
         </ul>
 
         <button
-          className="rounded-lg p-2 text-fog hover:text-snow md:hidden"
+          className="rounded-lg p-2 text-fog hover:text-snow lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
@@ -104,7 +108,7 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.32, ease: EASE }}
-            className="glass-strong overflow-hidden md:hidden"
+            className="glass-strong overflow-hidden lg:hidden"
           >
             <ul className="space-y-1 px-5 py-4">
               {LINKS.map(({ id, label }) => (
